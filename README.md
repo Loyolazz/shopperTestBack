@@ -43,8 +43,6 @@ To start the server:
 
 The server will run on http://localhost:3000.
 
-7. Running Tests
+## Tem o Insomnia pronto para teste
    ```sh
-   npm run dev
-
-## Project Structure
+   Insomnia_2024-08-29.json
