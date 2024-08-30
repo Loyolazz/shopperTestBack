@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  base64     Bytes
+  created_at DateTime @default(now())
+
+  Reading Reading?
+
+  @@map("image")
+}
+
+model Reading {
+  id               String   @id @default(uuid())
+  customer_code    String
+  image_id         String   @unique
+  measure_value    Int
+  measure_type     String
+  measure_datetime DateTime
+  has_confirmed    Boolean
+  created_at       DateTime @default(now())
+
+  image Image @relation(fields: [image_id], references: [id])
+
+  @@map("reading")
+}
